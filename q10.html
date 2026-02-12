@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q10</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="hearts"></div>
+
+  <audio id="music" loop>
+    <source src="assets/take-you-there.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="page">
+    <img src="images/q10.jpg" class="photo" alt="Q10 photo">
+    <h2>Be honest Princess what are we</h2>
+
+    <div class="choices">
+      <button onclick="go('q10','Soulmates','final.html')">Soulmates</button>
+      <button onclick="go('q10','Best friends who fell in love','final.html')">Best friends who fell in love</button>
+      <button onclick="go('q10','God’s timing','final.html')">God’s timing</button>
+      <button onclick="go('q10','All of the above','final.html')">All of the above</button>
+    </div>
+  </div>
+
+  <script>
+    function go(q,a,next){ localStorage.setItem(q,a); window.location.href=next; }
+  </script>
+
+  <script src="js/hearts.js"></script>
+  <script src="js/quotes.js"></script>
+  <script src="js/music.js"></script>
+</body>
+</html>

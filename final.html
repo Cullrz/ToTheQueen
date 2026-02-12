@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="finalBody">
+
+  <div id="hearts"></div>
+  <canvas id="fxCanvas"></canvas>
+  <div id="finalMsg"></div>
+
+  <div id="flowerStage" class="hidden">
+    <canvas id="threeCanvas"></canvas>
+  </div>
+
+  <audio id="music" loop>
+    <source src="assets/take-you-there.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="finalBg"></div>
+
+  <div class="finalOverlay">
+    <div class="finalCard">
+      <h2>Princess will you be my Valentine</h2>
+      <div class="finalBtns">
+        <button id="yesBtn" type="button">YES</button>
+        <button id="noBtn" type="button">NO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- scripts LAST so the buttons definitely exist -->
+  <script src="js/hearts.js"></script>
+  <script src="js/quotes.js"></script>
+  <script src="js/music.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="js/final_fx.js"></script>
+</body>
+</html>

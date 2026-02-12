@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q7</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="hearts"></div>
+
+  <audio id="music" loop>
+    <source src="assets/take-you-there.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="page">
+    <img src="images/q7.jpg" class="photo" alt="Q7 photo">
+    <h2>Because of a bet what ended up getting bought</h2>
+
+    <div class="choices">
+      <button onclick="go('q7','Something embarrassing','q8.html')">Something embarrassing</button>
+      <button onclick="go('q7','Shoes','q8.html')">Shoes</button>
+      <button onclick="go('q7','Food','q8.html')">Food</button>
+      <button onclick="go('q7','Cologne','q8.html')">Cologne</button>
+    </div>
+  </div>
+
+  <script>
+    function go(q,a,next){ localStorage.setItem(q,a); window.location.href=next; }
+  </script>
+
+  <script src="js/hearts.js"></script>
+  <script src="js/quotes.js"></script>
+  <script src="js/music.js"></script>
+</body>
+</html>
