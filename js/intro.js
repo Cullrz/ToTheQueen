@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // Give burn time to finish before changing page
       setTimeout(() => {
-        window.location.href = "q1.html"; // <-- make sure your first question file is q1.html
+        window.location.href = "q2.html"; // <-- make sure your first question file is q1.html
       }, 2600);
 
     } catch (e) {
@@ -48,3 +48,4 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
