@@ -12,31 +12,30 @@
   <div id="quotes"></div>
   <div id="hearts"></div>
 
-  <!-- INTRO OVERLAY (THIS IS THE FIRST PAGE) -->
+  <!-- INTRO OVERLAY (FIRST PAGE) -->
   <div id="intro">
     <div class="center">
       <h2>Play music?</h2>
       <p style="opacity:.85;max-width:460px;margin:10px auto 18px;">
         Tap Yes to start the vibe 💙
       </p>
-      <button id="musicYes">Yes, play it</button>
+      <button id="startMusicBtn">Yes, play it</button>
+      <div id="introStatus" style="margin-top:10px;opacity:.85;"></div>
     </div>
   </div>
 
   <!-- AUDIO (must be triggered by click) -->
   <audio id="bgMusic" src="assets/take-you-there.mp3" preload="auto" loop></audio>
 
-  <!-- Your first question page link will happen after burn -->
+  <!-- PAGE UNDER INTRO -->
   <div class="page">
     <h2>Loading…</h2>
   </div>
 
-  <!-- Scripts (order matters) -->
+  <!-- Scripts -->
   <script src="js/hearts.js"></script>
   <script src="js/quotes.js"></script>
-  <script src="js/music.js"></script>
   <script src="js/intro.js"></script>
 
 </body>
 </html>
-
