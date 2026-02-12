@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div id="quotes"></div>
   <div id="hearts"></div>
 
   <audio id="music" loop>
@@ -25,7 +26,11 @@
   </div>
 
   <script>
-    function go(q,a,next){ localStorage.setItem(q,a); window.location.href=next; }
+    function go(q,a,next){
+      localStorage.setItem(q,a);
+      if (window.__saveMusicTime) window.__saveMusicTime();
+      window.location.href = next;
+    }
   </script>
 
   <script src="js/hearts.js"></script>
