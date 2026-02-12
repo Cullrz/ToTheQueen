@@ -1,23 +1,16 @@
-const btn = document.getElementById("startBtn");
-const intro = document.getElementById("intro");
-const music = document.getElementById("music");
+window.addEventListener("DOMContentLoaded", () => {
+  const intro = document.getElementById("intro");
+  const btn = document.getElementById("startMusicBtn");
 
-btn.onclick = async () => {
-  try {
-    await music.play();
-    localStorage.setItem("musicUnlocked", "1");
-  } catch (e) {
-    alert("Music didn’t start. Check assets/take-you-there.mp3");
-    return;
-  }
+  btn.addEventListener("click", async () => {
+    const ok = await window.__playMusic?.();
 
-  intro.classList.add("burn");
+    // burn regardless, but music should work now because it's user-clicked
+    intro.classList.add("burn");
 
-  setTimeout(() => {
-    intro.style.display = "none";
-  }, 2100);
-};
-
-function next(){
-  window.location.href = "q2.html";
-}
+    setTimeout(() => {
+      // go to first question page
+      window.location.href = "q2.html"; // change if your first question page is different
+    }, 2100);
+  });
+});
