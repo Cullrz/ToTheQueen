@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Q2</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q2</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <div id="hearts"></div>
 
-  <audio id="music" loop>
-    <source src="assets/take-you-there.mp3" type="audio/mpeg">
-  </audio>
+<!-- floating layers -->
+<div id="quotes"></div>
+<div id="hearts"></div>
 
-  <div class="page">
+<!-- IMPORTANT: SAME ID ON EVERY PAGE -->
+<audio id="bgMusic" src="assets/take-you-there.mp3" preload="auto" loop></audio>
+
+<div class="page">
+
     <img src="images/q2.jpg" class="photo" alt="Q2 photo">
-    <h2>Do you think I will do anything in my power to make your dreams come true?</h2>
+
+    <h2>
+        Do you think I will do anything in my power to make your dreams come true?
+    </h2>
 
     <div class="choices">
-      <button onclick="go('q2','YES','q3.html')">YES</button>
-      <button onclick="go('q2','NO','q3.html')">NO</button>
+        <button onclick="go('q2','YES','q3.html')">YES</button>
+        <button onclick="go('q2','NO','q3.html')">NO</button>
     </div>
-  </div>
 
-  <script>
-    function go(q, a, next){
-      localStorage.setItem(q, a);
-      window.location.href = next;
-    }
-  </script>
+</div>
 
-  <script src="js/hearts.js"></script>
-  <script src="js/quotes.js"></script>
-  <script src="js/music.js"></script>
+<script>
+function go(q, a, next){
+    localStorage.setItem(q, a);
+    window.location.href = next;
+}
+</script>
+
+<!-- global scripts -->
+<script src="js/hearts.js"></script>
+<script src="js/quotes.js"></script>
+<script src="js/music.js"></script>
+
 </body>
 </html>
