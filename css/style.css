@@ -65,7 +65,7 @@ h2{
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:10;
+  z-index:10000;
 }
 
 .center{
@@ -329,4 +329,5 @@ h2{
 #yesBtn.yesLocked{
   box-shadow: 0 0 20px rgba(150,190,255,.65), 0 0 55px rgba(140,160,255,.35);
   transform: scale(1.06);
+
 }
