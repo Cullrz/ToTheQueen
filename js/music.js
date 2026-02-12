@@ -3,60 +3,33 @@ window.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bgMusic");
   if (!music) return;
 
-  // Resume if user already started music
+  // If user already allowed music on intro, keep playing
   const shouldPlay = localStorage.getItem("playMusic") === "1";
-  const savedTime = parseFloat(localStorage.getItem("musicTime") || "0");
 
-  if (shouldPlay) {
-    // try to continue where it left off
-    if (!Number.isNaN(savedTime) && savedTime > 0) {
-      music.currentTime = savedTime;
-    }
-
-    // Attempt autoplay (may fail until user clicks once on that page)
-    music.play().catch(() => {
-      // If blocked, show a tiny tap-to-resume banner
-      showTapToResume(music);
-    });
+  // Restore the last saved time (if any)
+  const saved = parseFloat(localStorage.getItem("musicTime") || "0");
+  if (!Number.isNaN(saved) && saved > 0) {
+    try { music.currentTime = saved; } catch (e) {}
   }
 
-  // Keep saving time while it plays
-  const saveTime = () => localStorage.setItem("musicTime", String(music.currentTime));
-  music.addEventListener("timeupdate", saveTime);
-  music.addEventListener("pause", saveTime);
-  window.addEventListener("beforeunload", saveTime);
+  // Keep saving time as it plays
+  music.addEventListener("timeupdate", () => {
+    localStorage.setItem("musicTime", String(music.currentTime || 0));
+  });
 
-  function showTapToResume(musicEl) {
-    // avoid duplicates
-    if (document.getElementById("resumeMusicBar")) return;
+  // Also save right before leaving the page
+  window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", String(music.currentTime || 0));
+  });
 
-    const bar = document.createElement("div");
-    bar.id = "resumeMusicBar";
-    bar.style.position = "fixed";
-    bar.style.left = "50%";
-    bar.style.top = "16px";
-    bar.style.transform = "translateX(-50%)";
-    bar.style.zIndex = "99999";
-    bar.style.padding = "10px 14px";
-    bar.style.borderRadius = "999px";
-    bar.style.background = "rgba(255,255,255,0.12)";
-    bar.style.backdropFilter = "blur(10px)";
-    bar.style.boxShadow = "0 0 25px rgba(110,150,255,0.25)";
-    bar.style.color = "white";
-    bar.style.fontFamily = "Arial, sans-serif";
-    bar.style.fontSize = "14px";
-    bar.style.cursor = "pointer";
-    bar.textContent = "Tap to resume music 💙";
-
-    bar.addEventListener("click", async () => {
-      try {
-        await musicEl.play();
-        bar.remove();
-      } catch (e) {
-        // still blocked
-      }
-    });
-
-    document.body.appendChild(bar);
+  // Try to autoplay if we already got permission on intro
+  if (shouldPlay) {
+    const p = music.play();
+    if (p && typeof p.catch === "function") {
+      p.catch(() => {
+        // Some browsers block autoplay on page load.
+        // It will still keep the saved time and resume as soon as the user clicks anything.
+      });
+    }
   }
 });
