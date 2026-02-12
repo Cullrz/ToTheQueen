@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Princess 💙</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To The Queen</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
+  <!-- Floating Hearts + Quotes layers -->
+  <div id="quotes"></div>
   <div id="hearts"></div>
 
-  <!-- MUSIC -->
-  <audio id="music" loop>
-    <source src="assets/take-you-there.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- INTRO OVERLAY -->
+  <!-- INTRO OVERLAY (THIS IS THE FIRST PAGE) -->
   <div id="intro">
     <div class="center">
-      <h1>Princess 💙</h1>
-      <p>Before we start, turn the sound on</p>
-      <button id="startBtn" type="button">Tap to play 🎧</button>
+      <h2>Play music?</h2>
+      <p style="opacity:.85;max-width:460px;margin:10px auto 18px;">
+        Tap Yes to start the vibe 💙
+      </p>
+      <button id="startMusicBtn">Yes, play it</button>
     </div>
   </div>
 
-  <!-- QUESTION 1 -->
-  <div id="q1" class="page">
-    <img src="images/q1.jpg" class="photo" alt="Q1 photo">
-    <h2>When did we both start acting different around each other even if we didn’t say it out loud?</h2>
+  <!-- AUDIO (must be triggered by click) -->
+  <audio id="bgMusic" src="assets/take-you-there.mp3" preload="auto" loop></audio>
 
-    <div class="choices">
-      <button type="button" onclick="next()">June 2023</button>
-      <button type="button" onclick="next()">December 2022</button>
-      <button type="button" onclick="next()">February 2024</button>
-      <button type="button" onclick="next()">August 2023</button>
-    </div>
+  <!-- Your first question page link will happen after burn -->
+  <div class="page">
+    <h2>Loading…</h2>
   </div>
 
+  <!-- Scripts (order matters) -->
   <script src="js/hearts.js"></script>
+  <script src="js/quotes.js"></script>
+  <script src="js/music.js"></script>
   <script src="js/intro.js"></script>
+
 </body>
 </html>
