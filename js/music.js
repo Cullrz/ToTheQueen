@@ -1,21 +1,20 @@
-// Keeps music playing across pages using localStorage time
-const music = document.getElementById("music");
+window.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("bgMusic");
 
-window.addEventListener("load", async () => {
-  // Only try to autoplay after user already tapped on intro
-  const unlocked = localStorage.getItem("musicUnlocked") === "1";
-  if (!unlocked) return;
+  // helpful for debugging
+  audio.addEventListener("error", () => {
+    console.log("Audio error. Check file path + name:", audio.src);
+  });
 
-  const savedTime = parseFloat(localStorage.getItem("musicTime") || "0");
-  if (!Number.isNaN(savedTime) && savedTime > 0) {
-    try { music.currentTime = savedTime; } catch (e) {}
-  }
-
-  try { await music.play(); } catch (e) {}
+  window.__playMusic = async () => {
+    try {
+      audio.volume = 0.85;
+      await audio.play();
+      console.log("Music playing ✅");
+      return true;
+    } catch (e) {
+      console.log("Music play blocked ❌", e);
+      return false;
+    }
+  };
 });
-
-// Save time frequently
-setInterval(() => {
-  if (!music) return;
-  localStorage.setItem("musicTime", String(music.currentTime || 0));
-}, 700);
